@@ -7,7 +7,7 @@ const STATUS_OUTRO = 'outro';
 
 const initialState = {
     autoflip: false,
-    color: 'darkslategray',
+    color: 'gray',
     helpmove: false,
     showcoordinates: true,
     status: STATUS_INTRO,
