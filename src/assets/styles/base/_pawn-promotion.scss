@@ -1,0 +1,38 @@
+@use "../utilities/mixins";
+
+.pawn-promotion {
+  opacity: 0.9;
+  background-color: white;
+  width: 100%;
+  height: 681px;
+  position: absolute;
+  margin-top: 19px;
+  top: 0;
+
+  .label {
+    top: 48px;
+    left: 0;
+    position: relative;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    width: 325px;
+  }
+
+  @include mixins.for-tablet-portrait-up { 
+    .label {
+      top: 150px;
+      width: 526px;
+    }
+  }
+  
+  @include mixins.for-desktop-up {
+    top: 195px;
+    width: 680px;
+  }
+
+  .piece:hover {
+    background-color: orange;
+    border: 2px solid black;
+  }
+}    

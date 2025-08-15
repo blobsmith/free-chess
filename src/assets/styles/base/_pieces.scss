@@ -1,0 +1,333 @@
+@use "../utilities/mixins";
+@use "../utilities/variables";
+
+.pieces {
+  position: absolute;
+  margin-top: 20px;
+  top: 0;
+}
+
+.piece {
+  width: variables.$square_size_small;
+  height: variables.$square_size_small;
+  position: absolute;
+
+  img {
+    padding: variables.$piece_padding_small;
+    width: variables.$piece_size_small;
+    height: variables.$piece_size_small;
+  }
+}
+
+@include mixins.for-tablet-portrait-up {    
+  .piece {
+    width: variables.$square_size_medium;
+    height: variables.$square_size_medium;
+  
+    img {
+      padding: variables.$piece_padding_medium;
+      width: variables.$piece_size_medium;
+      height: variables.$piece_size_medium;
+    }
+  }
+}
+
+@include mixins.for-desktop-up { 
+  .piece {
+    width: variables.$square_size_large;
+    height: variables.$square_size_large;
+  
+    img {
+      padding: variables.$piece_padding_large;
+      width: variables.$piece_size_large;
+      height: variables.$piece_size_large;
+    }
+  }
+}
+
+.game-board {
+
+  /** Pieces position on regular display mode **/
+  &.regular {
+    .columnB {
+      left: variables.$column2_small;
+    }
+    .columnC {
+      left: variables.$column3_small;
+    }
+    .columnD {
+      left: variables.$column4_small;
+    }
+    .columnE {
+      left: variables.$column5_small;
+    }
+    .columnF {
+      left: variables.$column6_small;
+    }
+    .columnG {
+      left: variables.$column7_small;
+    }
+    .columnH {
+      left: variables.$column8_small;
+    }
+    .row1 {
+      top: variables.$column8_small;
+    }
+    .row2 {
+      top: variables.$column7_small;
+    }
+    .row3 {
+      top: variables.$column6_small;
+    }
+    .row4 {
+      top: variables.$column5_small;
+    }
+    .row5 {
+      top: variables.$column4_small;
+    }
+    .row6 {
+      top: variables.$column3_small;
+    }
+    .row7 {
+      top: variables.$column2_small;
+    }
+  }
+
+  /** Pieces position on reverse display mode **/
+  &.reverse {
+    .columnA {
+      left: variables.$column8_small;
+    }
+    .columnB {
+      left: variables.$column7_small;
+    }
+    .columnC {
+      left: variables.$column6_small;
+    }
+    .columnD {
+      left: variables.$column5_small;
+    }
+    .columnE {
+      left: variables.$column4_small;
+    }
+    .columnF {
+      left: variables.$column3_small;
+    }
+    .columnG {
+      left: variables.$column2_small;
+    }
+    .row8 {
+      top: variables.$column8_small;
+    }
+    .row7 {
+      top: variables.$column7_small;
+    }
+    .row6 {
+      top: variables.$column6_small;
+    }
+    .row5 {
+      top: variables.$column5_small;
+    }
+    .row4 {
+      top: variables.$column4_small;
+    }
+    .row3 {
+      top: variables.$column3_small;
+    }
+    .row2 {
+      top: variables.$column2_small;
+    }
+  }
+}
+
+@include mixins.for-tablet-portrait-up {    
+  .game .game-board {
+    /** Pieces position on regular display mode **/
+    &.regular {
+      .columnB {
+        left: variables.$column2_medium;
+      }
+      .columnC {
+        left: variables.$column3_medium;
+      }
+      .columnD {
+        left: variables.$column4_medium;
+      }
+      .columnE {
+        left: variables.$column5_medium;
+      }
+      .columnF {
+        left: variables.$column6_medium;
+      }
+      .columnG {
+        left: variables.$column7_medium;
+      }
+      .columnH {
+        left: variables.$column8_medium;
+      }
+      .row1 {
+        top: variables.$column8_medium;
+      }
+      .row2 {
+        top: variables.$column7_medium;
+      }
+      .row3 {
+        top: variables.$column6_medium;
+      }
+      .row4 {
+        top: variables.$column5_medium;
+      }
+      .row5 {
+        top: variables.$column4_medium;
+      }
+      .row6 {
+        top: variables.$column3_medium;
+      }
+      .row7 {
+        top: variables.$column2_medium;
+      }
+    }
+
+    /** Pieces position on reverse display mode **/
+    &.reverse {
+      .columnA {
+        left: variables.$column8_medium;
+      }
+      .columnB {
+        left: variables.$column7_medium;
+      }
+      .columnC {
+        left: variables.$column6_medium;
+      }
+      .columnD {
+        left: variables.$column5_medium;
+      }
+      .columnE {
+        left: variables.$column4_medium;
+      }
+      .columnF {
+        left: variables.$column3_medium;
+      }
+      .columnG {
+        left: variables.$column2_medium;
+      }
+      .row8 {
+        top: variables.$column8_medium;
+      }
+      .row7 {
+        top: variables.$column7_medium;
+      }
+      .row6 {
+        top: variables.$column6_medium;
+      }
+      .row5 {
+        top: variables.$column5_medium;
+      }
+      .row4 {
+        top: variables.$column4_medium;
+      }
+      .row3 {
+        top: variables.$column3_medium;
+      }
+      .row2 {
+        top: variables.$column2_medium;
+      }
+    }
+  }
+}
+
+@include mixins.for-desktop-up {    
+  .game .game-board {
+    /** Pieces position on regular display mode **/
+    &.regular {
+      .columnB {
+        left: variables.$column2_large;
+      }
+      .columnC {
+        left: variables.$column3_large;
+      }
+      .columnD {
+        left: variables.$column4_large;
+      }
+      .columnE {
+        left: variables.$column5_large;
+      }
+      .columnF {
+        left: variables.$column6_large;
+      }
+      .columnG {
+        left: variables.$column7_large;
+      }
+      .columnH {
+        left: variables.$column8_large;
+      }
+      .row1 {
+        top: variables.$column8_large;
+      }
+      .row2 {
+        top: variables.$column7_large;
+      }
+      .row3 {
+        top: variables.$column6_large;
+      }
+      .row4 {
+        top: variables.$column5_large;
+      }
+      .row5 {
+        top: variables.$column4_large;
+      }
+      .row6 {
+        top: variables.$column3_large;
+      }
+      .row7 {
+        top: variables.$column2_large;
+      }
+    }
+
+    /** Pieces position on reverse display mode **/
+    &.reverse {
+      .columnA {
+        left: variables.$column8_large;
+      }
+      .columnB {
+        left: variables.$column7_large;
+      }
+      .columnC {
+        left: variables.$column6_large;
+      }
+      .columnD {
+        left: variables.$column5_large;
+      }
+      .columnE {
+        left: variables.$column4_large;
+      }
+      .columnF {
+        left: variables.$column3_large;
+      }
+      .columnG {
+        left: variables.$column2_large;
+      }
+      .row8 {
+        top: variables.$column8_large;
+      }
+      .row7 {
+        top: variables.$column7_large;
+      }
+      .row6 {
+        top: variables.$column6_large;
+      }
+      .row5 {
+        top: variables.$column5_large;
+      }
+      .row4 {
+        top: variables.$column4_large;
+      }
+      .row3 {
+        top: variables.$column3_large;
+      }
+      .row2 {
+        top: variables.$column2_large;
+      }
+    }
+  }
+}

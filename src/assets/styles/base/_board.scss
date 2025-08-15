@@ -1,0 +1,113 @@
+@use "../utilities/mixins";
+@use "../utilities/variables";
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.square {
+  float: left;
+  font-size: 5px;
+  font-weight: bold;
+  padding: 0;
+  position: relative;
+  line-height: variables.$square_size_small;
+  height: variables.$square_size_small;
+  width: variables.$square_size_small;
+
+  .square-label {
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    line-height: 9px;
+    z-index: 1;
+  }
+
+  &.dark {
+    background-color: black;
+    &.blue {
+      background-color: #6cdae7;
+    }
+    &.brown {
+      background-color: #582900;
+    }
+    &.green {
+      background-color: yellowgreen;
+    }
+    &.gray {
+      background-color: darkslategray;
+    }
+    &.orange {
+      background-color: darkorange;
+    }
+    &.violet {
+      background-color: darkmagenta;
+    }
+    &.red {
+      background-color: crimson;
+    }
+    &.last-move {
+      background-color: lightskyblue;
+    }
+
+    .square-label {
+      color: white;
+    }
+  }
+
+  &.light {
+    background-color: #ffffee;
+    &.last-move {
+      background-color: lightskyblue;
+    }
+  }
+
+
+
+  &:focus {
+    outline: none;
+  }
+
+  .dot {
+    height: 15%;
+    width: 15%;
+    display: inline-block;
+    opacity: 1;
+    margin: 39%;
+    z-index: 1;
+    position: absolute;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 5px 5px #f0f;
+  }
+}
+
+.square-selected {
+  background-color: deepskyblue;
+}  
+
+@include mixins.for-tablet-portrait-up { 
+  .board-row {
+    .square {
+      line-height: variables.$square_size_medium;
+      height: variables.$square_size_medium;
+      width: variables.$square_size_medium;
+      font-size: 7px;
+    }
+  } 
+}
+
+@include mixins.for-desktop-up {
+  .board-row {
+    .square {
+      line-height: variables.$square_size_large;
+      height: variables.$square_size_large;
+      width: variables.$square_size_large;
+      font-size: 9px;
+    }
+  } 
+}

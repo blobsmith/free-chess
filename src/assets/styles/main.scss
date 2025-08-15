@@ -1,0 +1,11 @@
+@use "fontawesome/fontawesome.scss";
+@use "fontawesome/solid.scss";
+@use "fontawesome/regular.scss";
+
+@use "utilities/mixins";
+@use "utilities/variables";
+
+@use "base/game";
+@use "base/pieces";
+@use "base/board";
+@use "base/pawn-promotion";
