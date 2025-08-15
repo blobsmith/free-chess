@@ -7,9 +7,9 @@ const STATUS_OUTRO = 'outro';
 
 const initialState = {
     autoflip: false,
-    color: 'gray',
-    helpmove: false,
-    showcoordinates: true,
+    color: 'brown',
+    helpmove: true,
+    showcoordinates: false,
     status: STATUS_INTRO,
 };
 

@@ -7,16 +7,18 @@ const nextPlayerSlice = createSlice({
     name: 'pieceselected',
     initialState,
     reducers: {
-        gameStarted(state, action) {
+        gameStarted(state) {
             state = piecesService.WHITE_PIECE;
+            return state;
         },
-        pieceMoved(state, action) {
+        playerChanged(state) {
             if (state === piecesService.WHITE_PIECE) {
                 state = piecesService.BLACK_PIECE;
             }
             else {
                 state = piecesService.WHITE_PIECE;
             }
+            return state;
         },
     }
 })
@@ -25,7 +27,7 @@ const nextPlayerSlice = createSlice({
 // export them as named exports from this "slice" file
 export const {
     gameStarted,
-    pieceMoved,
+    playerChanged,
 } = nextPlayerSlice.actions
 
 // Export the slice reducer as the default export

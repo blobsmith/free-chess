@@ -3,12 +3,14 @@ import configurationSlice from './configurationSlice.js';
 import piecePositionSlice from './piecePositionSlice.js';
 import pieceSelectedSlice from './pieceSelectedSlice.js';
 import nextPlayerSlice from './nextPlayerSlice.js';
+import movementsSlice from './movementsSlice.js';
 
 const chessReducers = combineReducers({
     configuration: configurationSlice,
     piecePosition: piecePositionSlice,
     pieceSelected: pieceSelectedSlice,
     nextPlayer: nextPlayerSlice,
+    availableMovements: movementsSlice,
 });
 
 export default chessReducers;

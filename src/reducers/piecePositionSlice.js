@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import movementsService from '../services/MovementsService';
-import promotionService from '../services/PromotionService';
+// import promotionService from '../services/PromotionService';
 
 const initialState = Object.assign({}, movementsService.initPiecesPosition);
 
@@ -8,14 +8,16 @@ const piecePositionSlice = createSlice({
     name: 'pieceposition',
     initialState,
     reducers: {
-        gameStarted(state, action) {
-            state = Object.assign({}, movementsService.initPiecesPosition);
+        gameStarted() {
+            return initialState;
         },
         pieceMoved(state, action) {
-            state = movementsService.move(action.selectedPiece, action.toPosition, action.availableMovements, state);
+            state = movementsService.move(action.payload.selected, action.payload.position, action.payload.movements, state);
+            return state;
         },
         pawnPromoted(state, action) {
-            state = promotionService.promotion(action.pieceName, action.pieceType, state);
+            // state = promotionService.promotion(action.pieceName, action.pieceType, state);
+            return state;
         },
     }
 })

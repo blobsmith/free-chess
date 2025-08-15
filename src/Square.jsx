@@ -1,33 +1,58 @@
 import { useState } from 'react'
-import { useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {pieceMoved} from "./reducers/piecePositionSlice.js";
+import {playerChanged} from "./reducers/nextPlayerSlice.js";
+import {moveReseted} from "./reducers/movementsSlice.js";
 
 function Square({letter, number, reverse, inverseResult}) {
+    const dispatch = useDispatch();
     const position = getPosition(letter, number);
     const background = getBackground(letter, number, reverse, inverseResult);
     const configuration = useSelector((state) => (state.configuration));
+    const selectedPiece = useSelector((state) => (state.pieceSelected));
+    const availableMovements = useSelector((state) => (state.availableMovements))
+
     // const showdot = showDot(position);
     const showCoordinates = configuration['showcoordinates'];
+
+    function handleMove() {
+        if (selectedPiece.selectedPiece !== '' && availableMovements.indexOf(position) !== -1) {
+            // In case of Pawn, manage the promotion.
+            // if (promotionService.promotionIsNeeded(selectedPiece, position)) {
+            //     this.props.launchPawnPromotion();
+            // }
+            const action = {
+                selected: selectedPiece.selectedPiece,
+                position: position,
+                movements: availableMovements,
+            };
+            dispatch(pieceMoved(action));
+            dispatch(playerChanged());
+            dispatch(moveReseted());
+        }
+    }
+
+    function showDot() {
+        let showDot = false;
+        if (configuration['helpmove']) {
+            if (availableMovements.indexOf(position) !== -1 ) {
+                showDot = true;
+            }
+        }
+        return showDot;
+    }
+
+
   return (
     <div
         id={position}
         className={'square ' + background}
-        // onClick={() => (handleMove(position))}
+        onClick={() => (handleMove())}
     >
-        {/*<div className={showdot ? 'dot' : 'hidden'}></div>*/}
+        <div className={showDot() ? 'dot' : 'hidden'}></div>
         <div className={'square-label ' + (showCoordinates ? 'show' : 'hidden')}>{position}</div>
     </div>
     )
-}
-
-function handleMove(position) {
-    if (this.props.selectedPiece !== '' && this.props.availableMovements.indexOf(position) !== -1) {
-        // In case of Pawn, manage the promotion.
-        if (promotionService.promotionIsNeeded(this.props.selectedPiece, position)) {
-            this.props.launchPawnPromotion();
-        }
-        this.props.move(this.props.selectedPiece, position);
-
-    }
 }
 
 function getPosition(letter, number) {
