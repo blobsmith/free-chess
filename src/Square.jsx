@@ -50,13 +50,28 @@ function Square({letter, number, reverse, inverseResult}) {
         onClick={() => (handleMove())}
     >
         <div className={showDot() ? 'dot' : 'hidden'}></div>
-        <div className={'square-label ' + (showCoordinates ? 'show' : 'hidden')}>{position}</div>
+        <div className={'square-letter ' + (showCoordinates ? 'show' : 'hidden')}>{getLetter(letter, number)}</div>
+        <div className={'square-number ' + (showCoordinates ? 'show' : 'hidden')}>{getNumber(letter, number)}</div>
     </div>
     )
 }
 
 function getPosition(letter, number) {
     return letter + number;
+}
+
+function getLetter(letter, number) {
+    if (number === '1') {
+        return letter;
+    }
+    return '';
+}
+
+function getNumber(letter, number) {
+    if (letter === 'A') {
+        return number;
+    }
+    return '';
 }
 
 /**

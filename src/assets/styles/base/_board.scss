@@ -17,10 +17,20 @@
   height: variables.$square_size_small;
   width: variables.$square_size_small;
 
-  .square-label {
+  .square-letter {
     position: absolute;
     right: 2px;
     bottom: 2px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    line-height: 9px;
+    z-index: 1;
+  }
+
+  .square-number {
+    position: absolute;
+    left: 3px;
+    top: 3px;
     margin-bottom: 0;
     padding-bottom: 0;
     line-height: 9px;
@@ -54,7 +64,8 @@
       background-color: lightskyblue;
     }
 
-    .square-label {
+    .square-letter,
+    .square-number {
       color: white;
     }
   }

@@ -9,7 +9,7 @@ const initialState = {
     autoflip: false,
     color: 'brown',
     helpmove: true,
-    showcoordinates: false,
+    showcoordinates: true,
     status: STATUS_INTRO,
 };
 
