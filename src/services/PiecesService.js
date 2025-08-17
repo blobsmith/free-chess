@@ -123,6 +123,78 @@ class PiecesService {
     }
 
     /**
+     * Get the name of the current piece type.
+     *
+     * @param type
+     *      The piece type. (P, R...)
+     *
+     * @param language
+     *      The language id (en, fr...)
+     *
+     * @returns {string}
+     *      The piece name.
+     */
+    getPieceLabel = (type, language) => {
+        let label = '';
+        switch(type) {
+            case this.PAWN:
+                label = 'Pawn'
+                switch (language) {
+                    case 'fr':
+                        label = 'Pion'
+                        break;
+                }
+                break;
+
+            case this.QUEEN:
+                label = 'Queen'
+                switch (language) {
+                    case 'fr':
+                        label = 'Reine'
+                        break;
+                }
+                break;
+
+            case this.KING:
+                label = 'King'
+                switch (language) {
+                    case 'fr':
+                        label = 'Roi'
+                        break;
+                }
+                break;
+
+            case this.BISHOP:
+                label = 'Bishop'
+                switch (language) {
+                    case 'fr':
+                        label = 'Fou'
+                        break;
+                }
+                break;
+
+            case this.ROOK:
+                label = 'Rook'
+                switch (language) {
+                    case 'fr':
+                        label = 'Tour'
+                        break;
+                }
+                break;
+
+            case this.KNIGHT:
+                label = 'Knight'
+                switch (language) {
+                    case 'fr':
+                        label = 'Cavalier'
+                        break;
+                }
+                break;
+        }
+        return label;
+    }
+
+    /**
      * Get only the column position of a piece.
      *
      * @param {string} selectedPiece

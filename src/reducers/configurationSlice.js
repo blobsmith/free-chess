@@ -10,6 +10,7 @@ const initialState = {
     color: 'brown',
     helpmove: true,
     showcoordinates: true,
+    language: 'en',
     status: STATUS_INTRO,
 };
 
@@ -22,7 +23,7 @@ const configurationSlice = createSlice({
             state.configurations.autoflip = autoflip;
             state.configurations.color = color;
             state.configurations.helpmove = helpmove;
-            state.configurations.status = STATUS_GAME;
+            state.configurations.status = status;
         },
         gamePending(state, action) {
             state.configurations.status = STATUS_PENDING;

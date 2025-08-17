@@ -66,9 +66,10 @@ const Piece = ( {item, color, position, type, name} ) => {
     return (
         <div
             key={item}
-            className={'piece ' + 'row'+ row + ' column' + column + (selectedPiece.selectedPiece === name ? ' square-selected' : '')}
+            className={'piece ' + 'row' + row + ' column' + column + (selectedPiece.selectedPiece === name ? ' square-selected' : '') + ' color' +piecesService.getPieceColor(name)}
         >
-            <img src={image}  alt="" onClick={handleClick} />
+            <img src={image} alt="" onClick={handleClick}/>
+            <div className={'pieceLabel ' + 'piece' + type}>{piecesService.getPieceLabel(type)}</div>
         </div>
     )
 };
