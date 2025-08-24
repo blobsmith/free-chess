@@ -4,6 +4,7 @@ import {pieceMoved} from "./reducers/piecePositionSlice.js";
 import {playerChanged} from "./reducers/nextPlayerSlice.js";
 import {moveReseted} from "./reducers/movementsSlice.js";
 import {wasMoved} from "./reducers/previousMoveSlice.js";
+import {historized} from "./reducers/historySlice.js";
 
 function Square({letter, number, reverse, inverseResult}) {
     const dispatch = useDispatch();
@@ -27,7 +28,9 @@ function Square({letter, number, reverse, inverseResult}) {
                 selected: selectedPiece.selectedPiece,
                 position: position,
                 movements: availableMovements,
+                taken: '',
             };
+            dispatch(historized(action));
             dispatch(pieceMoved(action));
             dispatch(wasMoved(action));
             dispatch(playerChanged());

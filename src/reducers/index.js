@@ -5,6 +5,7 @@ import pieceSelectedSlice from './pieceSelectedSlice.js';
 import nextPlayerSlice from './nextPlayerSlice.js';
 import movementsSlice from './movementsSlice.js';
 import previousMoveSlice from './previousMoveSlice.js';
+import historySlice from './historySlice.js';
 
 const chessReducers = combineReducers({
     configuration: configurationSlice,
@@ -13,6 +14,7 @@ const chessReducers = combineReducers({
     nextPlayer: nextPlayerSlice,
     availableMovements: movementsSlice,
     previousMove: previousMoveSlice,
+    history: historySlice,
 });
 
 export default chessReducers;
