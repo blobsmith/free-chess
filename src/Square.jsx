@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {pieceMoved} from "./reducers/piecePositionSlice.js";
 import {playerChanged} from "./reducers/nextPlayerSlice.js";
 import {moveReseted} from "./reducers/movementsSlice.js";
+import {wasMoved} from "./reducers/previousMoveSlice.js";
 
 function Square({letter, number, reverse, inverseResult}) {
     const dispatch = useDispatch();
@@ -11,6 +12,7 @@ function Square({letter, number, reverse, inverseResult}) {
     const configuration = useSelector((state) => (state.configuration));
     const selectedPiece = useSelector((state) => (state.pieceSelected));
     const availableMovements = useSelector((state) => (state.availableMovements))
+    const previousMove = useSelector((state) => (state.previousMove))
 
     // const showdot = showDot(position);
     const showCoordinates = configuration['showcoordinates'];
@@ -27,6 +29,7 @@ function Square({letter, number, reverse, inverseResult}) {
                 movements: availableMovements,
             };
             dispatch(pieceMoved(action));
+            dispatch(wasMoved(action));
             dispatch(playerChanged());
             dispatch(moveReseted());
         }
@@ -46,7 +49,7 @@ function Square({letter, number, reverse, inverseResult}) {
   return (
     <div
         id={position}
-        className={'square ' + background}
+        className={'square ' + background + ' color-previous-move-'+getPreviousClass(previousMove, position) }
         onClick={() => (handleMove())}
     >
         <div className={showDot() ? 'dot' : 'hidden'}></div>
@@ -54,6 +57,18 @@ function Square({letter, number, reverse, inverseResult}) {
         <div className={'square-number ' + (showCoordinates ? 'show' : 'hidden')}>{getNumber(letter, number)}</div>
     </div>
     )
+}
+
+function getPreviousClass(previousMove, position) {
+    let previousClass = 'none';
+    if (previousMove.from && previousMove.from === position) {
+        previousClass = 'from';
+    }
+
+    if (previousMove.to && previousMove.to === position) {
+        previousClass = 'to';
+    }
+    return previousClass;
 }
 
 function getPosition(letter, number) {

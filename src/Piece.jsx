@@ -5,6 +5,7 @@ import {pieceSelected, pieceUnselected} from "./reducers/pieceSelectedSlice.js";
 import {movesOfPieceSelected, moveReseted} from "./reducers/movementsSlice.js";
 import {pieceMoved} from "./reducers/piecePositionSlice.js";
 import {playerChanged} from "./reducers/nextPlayerSlice.js";
+import {wasMoved} from "./reducers/previousMoveSlice.js";
 
 const Piece = ( {item, color, position, type, name} ) => {
     const dispatch = useDispatch();
@@ -48,6 +49,7 @@ const Piece = ( {item, color, position, type, name} ) => {
                     movements: availableMovements,
                 };
                 dispatch(pieceMoved(action));
+                dispatch(wasMoved(action));
                 dispatch(playerChanged());
                 dispatch(moveReseted());
             }
