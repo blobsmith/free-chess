@@ -13,6 +13,7 @@ const historySlice = createSlice({
                 to: action.payload.position,
                 piece: piecesService.getPieceName(action.payload.selected),
                 taken: piecesService.getPieceName(action.payload.taken),
+                move: getMove(action.payload.selected, action.payload.position, action.payload.taken)
             };
             state = setInState(state, step);
             return state;
@@ -30,13 +31,16 @@ function setInState(state, step) {
     if (lastStep && lastStep.length === 1) {
         lastStep.push(step);
         state[historyLength - 1] = lastStep;
-        console.log(state[0][1]);
     }
     else {
         state.push(new Array(step));
-        console.log(state[0]);
     }
     return state;
+}
+
+function getMove(selected, position, taken) {
+    const type = piecesService.getPieceType(selected);
+    return (type !== 'P' ? type : '') + (taken ? 'x': '') + position.toLowerCase();
 }
 
 // `createSlice` automatically generated action creators with these names.

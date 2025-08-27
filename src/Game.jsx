@@ -3,6 +3,7 @@ import Board from "./Board.jsx";
 import {useSelector} from "react-redux";
 import piecesService from './services/PiecesService';
 import Piece from "./Piece";
+import History from "./History.jsx";
 
 function Game() {
     const configuration = useSelector((state) => (state.configuration));
@@ -17,6 +18,7 @@ function Game() {
                   {getPieces()}
               </div>
           </div>
+          <History></History>
       </div>
       )
 }
@@ -31,12 +33,12 @@ function getPieces () {
           const type = name.substring(0, 1);
           const fullName = piecesService.getPieceId(name, position);
           const piece = <Piece
-          key={fullName}
-           color={color}
-           position={position}
-           type={type}
-           name={fullName}
-      />;
+            key={fullName}
+            color={color}
+            position={position}
+            type={type}
+            name={fullName}
+        />;
     pieces.push(piece);
 })
     ;
